@@ -1,0 +1,4 @@
+###文件建立
+1.创建总文件夹asc和des，每个文件夹下面创建data、orbit、reframed、topo、F1、F2、F3、SBAS、merge 7个文件
+
+2.在F1、F2、F3文件夹下面创建raw、SLC、intf_in、topo，并且从 zx_path/GMTSAR/gmtsar/csh文件中将batch_tops.config
