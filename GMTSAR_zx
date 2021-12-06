@@ -6,12 +6,68 @@
 ###数据准备
 1.DEM数据
 网址：http://topex.ucsd.edu/gmtsar/demgen/
-(1) 在googleearth中得到经度范围和维度范围，点击网址输入，获取dem.grd，将dem.grd 移动到asc下的topo文件夹
+(1) 在googleearth中得到经度范围和维度范围，点击网址输入，获取dem.grd
 
-(2) 分别到F1/F2/F3文件夹下面的topo文件夹，输入 ln -s ../../topo/dem.grd . 将asc/topo的dem.grd连接到该路径
-
-(3)到asc/merge文件夹 输入 ln -s ../topo/dem.grd . 将将asc/topo的dem.grd连接到该路径
+(2)到asc/merge文件夹 输入 ln -s ../topo/dem.grd . 将asc/topo的dem.grd连接到该路径
 
 2.Sentinel-1数据
+上https://search.asf.alaska.edu网站下载url，利用idm下载
+
+3.精轨数据
+利用idm爬虫从https://s1qc.asf.alaska.edu/aux_poeorb/ 获取所有精轨文件，并用 find_orbit_copy.py获取对应Sentinel-1文件的精轨数据
+
+
+###数据存放处理
+1.Sentinel-1数据
+将下载的Senntinel-1所有压缩文件放到asc/data文件,在asc/data目录下输入unzip_sentinel-1.csh asc/data
+
+2. DEM数据
+(1)将dem.grd 移动到asc/topo文件夹,分别到F1/F2/F3文件夹下面的topo文件夹，输入 ln -s ../../topo/dem.grd . 将asc/topo的dem.grd连接到该路径
+
+(2)到asc/merge文件夹 输入 ln -s ../topo/dem.grd . 将asc/topo的dem.grd连接到该路径
+
+3.精轨数据
+（1）将精轨数据放到asc/data文件
+
+（2）将精轨数据放到asc/orbit
+
+4.运行.csh创建F1、F2、F3所需要软连接
+ 以F1为例子
+（1）数据连接 在F1/raw 输入link_S1.csh [asc/data 目录] [num]  第一个参数为asc/data 路径，第二个为F1、F2、F3中的1，2，3 
+
+（2）精密轨道连接 在F1/raw 输入 link_S1_orbits.csh asc/orbit/
+
+（3) F2、F3按照一样的流程操作
+
+###选择主影像，并配准
+
+1.生成干涉图基线表baseline_table.dat 和干涉对时空基线图 baseline.ps，干涉对时空基线图用以挑选主影像，选择位于中间的作为主影像。
+
+(1)在F1/raw 目录下输入 preproc_batch_tops.csh data.in dem.grd 1  生成baseline_table.dat和baseline.ps
+
+(2)在F1/raw 目录下输入 mv baseline_table.dat ../ 将生成的baseline_table.dat移动到上一层目录，确定主影像后，能够生成正确的baseline_table.dat
+
+(3)打开 baseline.ps 选择位于中间的作为主影像，打开data.in 将主影像对应的那行移动到第一行
+
+2. 配准图像
+在F1/raw 目录下 输入 preproc_batch_tops.csh data.in dem.grd 2
+
+3. 在F2、F3文件夹中 重复1、2操作
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
