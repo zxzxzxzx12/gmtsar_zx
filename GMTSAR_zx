@@ -54,13 +54,26 @@
 
 3. 在F2、F3文件夹中 重复1、2操作
 
+4.重建干涉图基线表
+（1）在F1/raw 目录下 输入 ls *ALL*PRM > prmlist 生成 prmlist 文件
+
+（2）在F1/raw 目录下 输入 get_baseline_table.csh prmlist [S1_20180508_ALL_F1.PRM] 该参数为主要影像，运行后在F1/raw 目录下生成新的 baseline_table.dat
+
+（3）在F2、F3文件夹中 重复(1)、(2)操作 需要将[S1_20180508_ALL_F1.PRM] 中的F1修改为F2、F3
+
+？？？（4）在F1目录下运行 rm -rf baseline_table.dat 删除旧的baseline_table.dat 同时运行 cp raw/baseline_table.dat ./ 将raw文件夹中新生成的baseline_table.dat复制过来
 
 
+###干涉图生成
+1.准备生成干涉图的干涉对表intf.in
+(1)在F1目录下运行 select_pairs.csh baseline_table.dat 50 100 其中50、100为是时间基线和空间基线，用以挑选小于二者的干涉对，生成intf.in文件
 
+(2)在F1目录下运行 cp intf.in ../F2 cp intf.in ../F3 将intf.in 复制到F2、F3文件夹
 
+(3)修改F2、F3文件夹中的intf.in ，到F2目录输入 vi intf.in  然后输入：进入vi编辑器的命令模式 输入 :%s/F1/F2/g 将F1全部改为F2 ，在F3目录进行相同的操作
 
-
-
+2.干涉图生成
+(1)生成一个干涉图进行测试
 
 
 
