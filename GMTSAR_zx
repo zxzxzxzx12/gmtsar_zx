@@ -1,4 +1,17 @@
 ###文件建立
 1.创建总文件夹asc和des，每个文件夹下面创建data、orbit、reframed、topo、F1、F2、F3、SBAS、merge 7个文件
 
-2.在F1、F2、F3文件夹下面创建raw、SLC、intf_in、topo，并且从 zx_path/GMTSAR/gmtsar/csh文件中将batch_tops.config
+2.在F1、F2、F3文件夹下面创建raw、SLC、intf_in、topo四个文件，并且从 zx_path/GMTSAR/gmtsar/csh文件中将batch_tops.config复制到F1，F2，F3文件夹下
+
+###数据准备
+1.DEM数据
+网址：http://topex.ucsd.edu/gmtsar/demgen/
+(1) 在googleearth中得到经度范围和维度范围，点击网址输入，获取dem.grd，将dem.grd 移动到asc下的topo文件夹
+
+(2) 分别到F1/F2/F3文件夹下面的topo文件夹，输入 ln -s ../../topo/dem.grd . 将asc/topo的dem.grd连接到该路径
+
+(3)到asc/merge文件夹 输入 ln -s ../topo/dem.grd . 将将asc/topo的dem.grd连接到该路径
+
+2.Sentinel-1数据
+
+
