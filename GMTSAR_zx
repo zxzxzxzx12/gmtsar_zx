@@ -56,7 +56,7 @@
 4.重建干涉图基线表
 （1）在F1/raw 目录下 输入 ls *ALL*PRM > prmlist 生成 prmlist 文件
 
-（2）在F1/raw 目录下 输入 get_baseline_table.csh prmlist [S1_20180508_ALL_F1.PRM] 该参数为主要影像，运行后在F1/raw 目录下生成新的 baseline_table.dat
+（2）在F1/raw 目录下 输入 get_baseline_table.csh prmlist [S1_20180508_ALL_F1.PRM] 该参数为主影像，运行后在F1/raw 目录下生成新的 baseline_table.dat
 
 （3）在F2、F3文件夹中 重复(1)、(2)操作 需要将[S1_20180508_ALL_F1.PRM] 中的F1修改为F2、F3
 
@@ -71,12 +71,34 @@
 
 (3)修改F2、F3文件夹中的intf.in ，到F2目录输入 vi intf.in  然后输入：进入vi编辑器的命令模式 输入 :%s/F1/F2/g 将F1全部改为F2 ，在F3目录进行相同的操作
 
-2.干涉图生成
-(1)生成一个干涉图进行测试
-1.修改F1的文件下的 batch_tops.config
-（1）master_image =  
+2.生成一个干涉图进行测试
 
-（2）Proc_stage = 1 shift_topo = 0 filter_wavelength = 200 range_dec = 8 azimuth_dec = 2 threshold_snaphu = 0 threshold_geocode = 0
+(1)修改F1的文件下的 batch_tops.config
+master_image =  
+
+Proc_stage = 1  threshold_geocode = 0   shift_topo = 0 filter_wavelength = 200 range_dec = 8 azimuth_dec = 2 threshold_snaphu = 0 
+
+(2)在F1/目录下运行 head -1 intf.in > one.in 和 intf_tops.csh one.in batch_tops.config
+
+(3)修改F1的文件下的 batch_tops.config proc_stage = 2 在F1/目录下运行 intf_tops_parallel.csh intf.in batch_tops.config 6
+
+(4)在F2/F3下重复操作(1) (2) (3)，注意(1)中 master_image =  换成F2、F3 （3）中 proc_stage = 2
+
+
+###合并图像
+1.在asc/merge 目录下分别输入 cp ../F1/intf.in ./  ls ../F1/intf_all/ > intflist  create_merge_input.csh intflist .. 0 > merge_list，最后修改merge_list，把主影像放到第一行
+
+2.在asc/merge 目录下分别输入 cp ../F2/batch_tops.config ./   ln -s ../topo/dem.grd ./    merge_batch.csh merge_list batch_tops.config
+
+
+
+###相位解缠
+
+
+
+
+
+
 
 
 
