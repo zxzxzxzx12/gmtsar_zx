@@ -93,7 +93,7 @@ Proc_stage = 1  threshold_geocode = 0   shift_topo = 0 filter_wavelength = 200 r
 
 
 ###相位解缠
-
+在merge文件夹下面 unwrap_parallel.csh intflist 6; 
 
 
 
