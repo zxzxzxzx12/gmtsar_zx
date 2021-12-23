@@ -74,9 +74,9 @@
 2.生成一个干涉图进行测试
 
 (1)修改F1的文件下的 batch_tops.config
-master_image =  
+1. master_image =   2. Proc_stage = 1  3. threshold_geocode = 0  4. range_dec = 8  5. azimuth_dec = 2 
 
-Proc_stage = 1  threshold_geocode = 0   shift_topo = 0 filter_wavelength = 200 range_dec = 8 azimuth_dec = 2 threshold_snaphu = 0 
+6. shift_topo = 0 filter_wavelength = 200 threshold_snaphu = 0 
 
 (2)在F1/目录下运行 head -1 intf.in > one.in 和 intf_tops.csh one.in batch_tops.config
 
