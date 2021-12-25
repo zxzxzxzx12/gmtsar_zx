@@ -66,6 +66,7 @@
 ###干涉图生成
 1.准备生成干涉图的干涉对表intf.in
 (1)在F1目录下运行 select_pairs.csh baseline_table.dat 50 100 其中50、100为是时间基线和空间基线，用以挑选小于二者的干涉对，生成intf.in文件
+注意可以按照自己要求设定 50 100 参数，但是保证网络不断 可以设定小的参数，然后人工手动加入干涉对
 
 (2)在F1目录下运行 cp intf.in ../F2 cp intf.in ../F3 将intf.in 复制到F2、F3文件夹
 
@@ -96,9 +97,22 @@
 在merge文件夹下面 unwrap_parallel.csh intflist 6; 
 
 
+###人工选择干涉对
+在merge/ 目录下新建 png/unwrap 文件，输入命令 plot_png.csh unwrap ./png/unwrap 得到所有unwrap.png 筛选出拼接错误png和质量差的干涉对，从merge中删除，并调整merge下的intf.in 文件
 
 
+###SBAS
 
+到此为止则完成了Unwrap的过程，接下来要进行的SBAS的过程
+1. 在SBAS目录下输入 cp ../merge/intf.in ./;  cp ../F1/baseline_table.dat ./; prep_sbas.csh intf.in baseline_table.dat ../merge unwrap.grd corr.grd; 这一步将会生成scene.tab 和 intf.tab
+2. gmt grdinfo ../merge/2020148_2020196/unwrap.grd ; x n_columns: 8548; y n_rows: 6532; 干涉对数量91；31景图像； sbas intf.tab scene.tab 91 31 8548 6532 ; 
+
+
+docker 要装的
+apt-get update
+vim
+ghost
+parallel
 
 
 
