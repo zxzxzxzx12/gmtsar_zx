@@ -1,2 +1,8 @@
 ISCE2
 1. 按照网址 https://zhuanlan.zhihu.com/p/269183148 进行
+2. 在isce目录下修改license.py文件，内容为：
+stanford_license = 'zxzxzx'
+3.在$HOME下新建.netrc文件，内容如下：
+machine urs.earthdata.nasa.gov
+login XXX
+password XXX
