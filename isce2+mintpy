@@ -6,5 +6,18 @@ stanford_license = 'zxzxzx'
 machine urs.earthdata.nasa.gov
 login XXX
 password XXX
-
 4. pip install shapely
+error:
+1.object.py 用pycharm编辑 空行不一致
+
+2.错误：UnicodeEncodeError: 'ascii' codec can't encode characters in position 11-13: ordinal not in range(128)
+  File "/home/zzz/anaconda3/envs/mintpy/lib/python3.8/site-packages/pyaps3/era.py", line 189, in get_ecmwf
+    grbs = pygrib.open(fname)
+  File "src/pygrib/_pygrib.pyx", line 320, in pygrib._pygrib.open.__cinit__
+  File "src/pygrib/_pygrib.pyx", line 1969, in pygrib._pygrib._strencode
+  
+一个方案是在python的Lib\site-packages文件夹下新建一个sitecustomize.py，内容为：
+#coding=utf8
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
