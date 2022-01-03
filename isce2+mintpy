@@ -16,8 +16,13 @@ error:
   File "src/pygrib/_pygrib.pyx", line 320, in pygrib._pygrib.open.__cinit__
   File "src/pygrib/_pygrib.pyx", line 1969, in pygrib._pygrib._strencode
   
-一个方案是在python的Lib\site-packages文件夹下新建一个sitecustomize.py，内容为：
+网址：https://www.cnblogs.com/bonelee/p/7613671.html
+1.在python的Lib\site-packages文件夹下新建一个sitecustomize.py，内容为：
 #coding=utf8
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
+2.在程序中加入以下代码
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
