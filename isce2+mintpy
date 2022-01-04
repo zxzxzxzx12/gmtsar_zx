@@ -17,12 +17,20 @@ error:
   File "src/pygrib/_pygrib.pyx", line 1969, in pygrib._pygrib._strencode
   
 网址：https://www.cnblogs.com/bonelee/p/7613671.html
+1.zx /home/zzz/anaconda3/envs/mintpy/lib/python3.8/site-packages 编辑
+#coding=utf8
+import sys
+import imp
+imp.reload(sys)
+#sys.setdefaultencoding('utf8')
+
 1.在python的Lib\site-packages文件夹下新建一个sitecustomize.py，内容为：
 #coding=utf8
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
+
 2.在程序中加入以下代码
+/home/zzz/anaconda3/envs/mintpy/lib/python3.8/site-packages/pyaps3
 import sys
-reload(sys)
 sys.setdefaultencoding('utf8')
