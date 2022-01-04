@@ -1,0 +1,8 @@
+
+1. gmtsar .grd 转 tif
+https://zhuanlan.zhihu.com/p/49520394 操作
+先运行sudo apt install gdal-bin 安装gdal_translate
+
+gdal_translate -of GTiff vel_ll.grd out.tif
+
+gdal_translate --formats 查看不同格式转化命令
