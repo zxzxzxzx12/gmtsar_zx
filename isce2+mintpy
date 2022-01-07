@@ -1,5 +1,12 @@
 ISCE2
 1. 按照网址 https://zhuanlan.zhihu.com/p/269183148 进行
+export ISCE_HOME=/home/serena/anaconda3/envs/isce2_env/lib/python3.8/site-packages/isce
+export PATH=$PATH:$ISCE_HOME/applications:$ISCE_HOME/bin
+export ISCE_STACK=/home/serena/isce2
+export prepStackToStaMPS=/home/serena/isce2/contrib/timeseries/prepStackToStaMPS
+export PATH=$prepStackToStaMPS/bin:/home/serena/isce2/contrib/stack/topsStack:$PATH
+
+测试：topsApp.py --steps --help
 2. 在isce目录下修改license.py文件，内容为：
 stanford_license = 'zxzxzx'
 3.在$HOME下新建.netrc文件，内容如下：
