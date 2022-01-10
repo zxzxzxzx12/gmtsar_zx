@@ -47,6 +47,22 @@ sys.setdefaultencoding('utf8')
 kill -9 -1 杀死所有进程
 kill -9 PID 杀死某个进程
 
+运行完毕
+save_gdal.py geo_velocity.h5 -o geo_velocity.tif
+
+
+ISCE geometry 前五步
+1.解压主影像，生成geom_reference和reference两个文件夹
+2.解压附影像，生成secondarys文件夹
+3.基线计算，生成baseline
+4.配准,生成coreg_secondarys文件夹，生成每个日期文件，并在下面生成IW1、IW2和IW3,每个文件里面54文件
+4.配准，在54个文件基础上，得到81个文件，并且外面生成12个文件
+
+
+
+
+
+
 
 
 
