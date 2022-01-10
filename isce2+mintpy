@@ -41,3 +41,12 @@ sys.setdefaultencoding('utf8')
 /home/zzz/anaconda3/envs/mintpy/lib/python3.8/site-packages/pyaps3
 import sys
 sys.setdefaultencoding('utf8')
+
+
+杀死进程：
+kill -9 -1 杀死所有进程
+kill -9 PID 杀死某个进程
+
+
+
+
