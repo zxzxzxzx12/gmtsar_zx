@@ -14,7 +14,9 @@ export PATH=$prepStackToStaMPS/bin:/root/isce2/contrib/stack/topsStack:$PATH
 
 
 
-
+ISCE报错
+找不到topsstack
+将stackSentinel.py 错误那项from topsstack.Stack import config, run, sentinelSLC改为from Stack import config, run, sentinelSLC
 
 
 测试：topsApp.py --steps --help
